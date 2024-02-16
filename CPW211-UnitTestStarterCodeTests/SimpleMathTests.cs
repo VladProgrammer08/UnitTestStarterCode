@@ -18,27 +18,56 @@ namespace CPW211_UnitTestStarterCode.Tests
         [DataRow(0, -0)]
         public void Add_TwoNumbers_ReturnsSum(double num1, double num2)
         {
-            // Use the DataRow values to test the Add method
-            Assert.Fail();
+            double expectedNumber = num1 + num2;
+            double actualNumber = SimpleMath.Add(num1, num2);
+
+            Assert.AreEqual(expectedNumber, actualNumber);
+
         }
 
         [TestMethod]
         public void Multiply_TwoNumbers_ReturnsProduct()
         {
-            // Use a few pairs of values to test the Multiply method
-            Assert.Fail();
+            double firstNumber = 10;
+            double secondNumber = 100;
+
+            double expectedNumber = firstNumber * secondNumber;
+            double actualNumber = SimpleMath.Multiply(firstNumber, secondNumber);
+            Assert.AreEqual(expectedNumber, actualNumber);
         }
 
         [TestMethod]
         public void Divide_DenominatorZero_ThrowsArgumentException()
         {
-            // Divide by zero should throw an argument exception with a message
-            // "Denominator cannot be zero"
-            Assert.Fail();
+            double numerator = 10;
+            double denominator = 0;
+            Assert.ThrowsException<ArgumentException>(() => SimpleMath.Divide(numerator, denominator));
+
         }
 
-        // TODO: Test Divide method with two valid numbers
+        [TestMethod]
+        public void Divide_TwoValidNumbers_ReturnsQuotient()
+        {
+            double firstNumber = 100;
+            double secondNumber = 10;
+            double expectedNumber = firstNumber / secondNumber;
 
-        // TODO: Test subtract method with two valid numbers
+            double actualNumber = SimpleMath.Divide(firstNumber, secondNumber);
+            Assert.AreEqual(expectedNumber, actualNumber);
+
+        }
+
+        [TestMethod]
+        public void Subtract_TwoValidNumbers_ReturnsSum()
+        {
+            double firstNumber = 10;
+            double secondNumber = 9;
+            
+            double expectedNumber = firstNumber - secondNumber;
+            double actualNumber = SimpleMath.Subtract(firstNumber, secondNumber);
+
+            Assert.AreEqual(expectedNumber, actualNumber);
+        }
+
     }
 }
